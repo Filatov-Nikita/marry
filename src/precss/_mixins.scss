@@ -1,0 +1,75 @@
+@mixin link-reset() {
+    text-decoration: none;
+    color: map-get($map: $colors, $key: wht);
+    font-family: roboto;
+    line-height: 1.5
+}
+
+@mixin ib-menu() {
+    display: inline-block;
+} 
+
+@mixin source-sans($size, $weight) {
+    font: {
+        family: 'Source Sans Pro', sans-serif;
+        size: $size; 
+        weight: $weight; }
+}
+@mixin roboto-sans($size: 16px, $weight: 400) {
+    font: {
+        family: 'roboto', sans-serif;
+        size: $size; 
+        weight: $weight; }
+}
+@mixin dflex($justify: flex-start) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: $justify
+}
+
+@mixin bg($color: map-get($map: $colors, $key: wht)) {
+    background: $color;
+}
+
+@mixin hover($transition: false, $prop: background) {
+    @if $transition {
+        transition: $prop, 0.3s;
+    }
+    &:hover{
+        @content;
+    }
+}
+@mixin radius($size, $topLeft: null, $topRight: null) {
+    @if $size {border-radius: $size;}
+    @if $topLeft {border-top-left-radius: $topLeft}
+    @if $topRight {border-top-right-radius: $topRight}
+}
+@mixin m-auto() {
+    margin-left: auto;
+    margin-right: auto;
+}
+@mixin absolute($zIndex: 0) {
+    position: absolute;
+    z-index: $zIndex;
+    @content;
+}
+@mixin uppercase() {
+    text-transform: uppercase;
+}
+@mixin inp-reset() {
+    outline: none;
+    border:0;
+}
+@mixin link-reset() {
+    text-decoration: none;
+}
+@mixin absolute-center($centerY: false) {
+    position: absolute;
+    left: 50%;
+    @if $centerY {
+        transform: translateX(-50%) translateY(50%);
+    } @else {
+        transform: translateX(-50%);
+    }
+    @content;
+}
